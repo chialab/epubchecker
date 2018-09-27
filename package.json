@@ -1,0 +1,36 @@
+{
+  "name": "epubchecker",
+  "version": "1.0.0",
+  "epubcheckVersion": "4.0.2",
+  "description": "Validation tool for ePub.",
+  "main": "lib/index.js",
+  "bin": {
+    "epubchecker": "./bin/epubchecker.js"
+  },
+  "scripts": {
+    "install": "node ./scripts/install.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Chialab/epubchecker.git"
+  },
+  "keywords": [
+    "EPUB",
+    "validator",
+    "IDPF"
+  ],
+  "author": "Chialab <dev@chialab.io> (https://www.chialab.it)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Chialab/epubchecker/issues"
+  },
+  "homepage": "https://github.com/Chialab/epubchecker",
+  "dependencies": {
+    "archiver": "^3.0.0",
+    "colors": "^1.3.2",
+    "commander": "^2.18.0",
+    "request": "^2.88.0",
+    "tempfile": "^2.0.0",
+    "unzip": "^0.1.11"
+  }
+}
