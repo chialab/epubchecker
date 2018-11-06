@@ -29,12 +29,8 @@ program
                 include: options.include && new RegExp(options.include),
             });
 
-            if (options.output) {
-                return;
-            }
-
             if (json.messages.length === 0) {
-                if (!options.silent) {
+                if (!options.silent && !options.output) {
                     console.log('Everything is fine'.green);
                 }
             } else {
@@ -52,7 +48,7 @@ program
                     } else {
                         noticesCount++;
                     }
-                    if (!options.silent) {
+                    if (!options.silent && !options.output) {
                         console.log(`${prefix.toLowerCase()}[${msg.ID}] ${msg.message.replace(/\n/g, '\\n')}`);
                         if (msg.locations && msg.locations.length) {
                             msg.locations.forEach((location) => {
@@ -68,7 +64,7 @@ program
                         }
                     }
                 });
-                if (!options.silent) {
+                if (!options.silent && !options.output) {
                     let messageChunk = [];
                     if (errorsCount) {
                         messageChunk.push(`${errorsCount} errors`.red);
