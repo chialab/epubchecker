@@ -29,6 +29,10 @@ program
                 include: options.include && new RegExp(options.include),
             });
 
+            if (options.output) {
+                return;
+            }
+
             if (json.messages.length === 0) {
                 if (!options.silent) {
                     console.log('Everything is fine'.green);
