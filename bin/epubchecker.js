@@ -12,9 +12,18 @@ program
     .option('-O, --output <path>', 'store json report')
     .option('--no-warnings', 'remove warnings from report')
     .option('--no-notices', 'remove notices from report')
-    .option('--ignore <regex>', 'regex for messages to ignore')
-    .option('--exclude <regex>', 'regex for files to exclude')
-    .option('--include <regex>', 'regex for files to include')
+    .option('--ignore <regex>', 'regex for messages to ignore', (ignore) => {
+        program.ignoreList = program.ignoreList || [];
+        program.ignoreList.push(ignore);
+    })
+    .option('--exclude <regex>', 'regex for files to exclude', (exclude) => {
+        program.excludeList = program.excludeList || [];
+        program.excludeList.push(exclude);
+    })
+    .option('--include <regex>', 'regex for files to include', (include) => {
+        program.includeList = program.includeList || [];
+        program.includeList.push(include);
+    })
     .option('--silent', 'do not log errors')
     .action(async (file, options = {}) => {
         try {
@@ -24,9 +33,9 @@ program
                 includeWarnings: !!options.warnings,
                 includeNotices: !!options.notices,
                 output: options.output && path.resolve(options.output),
-                ignore: options.ignore && new RegExp(options.ignore),
-                exclude: options.exclude && new RegExp(options.exclude),
-                include: options.include && new RegExp(options.include),
+                ignore: options.ignoreList && options.ignoreList.map(token => new RegExp(token)),
+                exclude: options.excludeList && options.excludeList.map(token => new RegExp(token)),
+                include: options.includeList && options.includeList.map(token => new RegExp(token)),
             });
 
             if (json.messages.length === 0) {
