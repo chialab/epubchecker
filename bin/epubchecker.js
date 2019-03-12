@@ -4,7 +4,7 @@ require('colors');
 const path = require('path');
 const program = require('commander');
 const { version } = require('../package.json');
-const eslintchecker = require('../lib/index');
+const epubchecker = require('../lib/index');
 
 program
     .version(version, '-v, --version')
@@ -25,17 +25,19 @@ program
         program.includeList.push(include);
     })
     .option('--silent', 'do not log errors')
+    .option('--locale <lang>', 'set the language of the report')
     .action(async (file, options = {}) => {
         try {
             file = path.resolve(file);
 
-            let json = await eslintchecker(file, {
+            let json = await epubchecker(file, {
                 includeWarnings: !!options.warnings,
                 includeNotices: !!options.notices,
                 output: options.output && path.resolve(options.output),
                 ignore: options.ignoreList && options.ignoreList.map(token => new RegExp(token)),
                 exclude: options.excludeList && options.excludeList.map(token => new RegExp(token)),
                 include: options.includeList && options.includeList.map(token => new RegExp(token)),
+                locale: options.locale,
             });
 
             if (json.messages.length === 0) {
