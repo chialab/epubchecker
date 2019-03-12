@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const request = require('request');
-const unzip = require('unzip');
+const Zip = require('adm-zip');
 const tempfile = require('tempfile');
 const { epubcheckVersion } = require('../package.json');
 
@@ -12,6 +12,6 @@ const VENDORS_DIR = path.resolve(__dirname, '../vendors');
 request({ url: URL, encoding: null })
     .pipe(fs.createWriteStream(ZIP_FILE))
     .on('close', () => {
-        fs.createReadStream(ZIP_FILE)
-            .pipe(unzip.Extract({ path: VENDORS_DIR }));
+        let zip = new Zip(ZIP_FILE);
+        zip.extractAllTo(VENDORS_DIR);
     });
