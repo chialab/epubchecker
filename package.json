@@ -1,7 +1,7 @@
 {
   "name": "epubchecker",
   "version": "1.2.0",
-  "epubcheckVersion": "4.2.0-beta",
+  "epubcheckVersion": "4.2.2",
   "description": "Validation tool for ePub.",
   "main": "lib/index.js",
   "bin": {
