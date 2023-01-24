@@ -5,7 +5,7 @@ const Zip = require('adm-zip');
 const tempfile = require('tempfile');
 const { epubcheckVersion } = require('../package.json');
 
-const URL = `https://github.com/IDPF/epubcheck/releases/download/v${epubcheckVersion}/epubcheck-${epubcheckVersion}.zip`;
+const URL = `https://github.com/w3c/epubcheck/releases/download/v${epubcheckVersion}/epubcheck-${epubcheckVersion}.zip`;
 const ZIP_FILE = tempfile('.zip');
 const VENDORS_DIR = path.resolve(__dirname, '../vendors');
 
