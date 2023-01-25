@@ -1,6 +1,6 @@
 # ePubChecker
 
-Use [`epubcheck`](https://github.com/IDPF/epubcheck) by IDPF to get a validation report of an ePub.
+Use [`epubcheck`](https://github.com/w3c/epubcheck) by W3C to get a validation report of an ePub.
 
 
 [![npm](https://img.shields.io/npm/v/epubchecker.svg?style=flat-square)](https://www.npmjs.com/package/epubchecker)
@@ -10,11 +10,13 @@ Use [`epubcheck`](https://github.com/IDPF/epubcheck) by IDPF to get a validation
 ### Node API
 
 Install the package:
-```sh
+
+```
 npm install epubchecker
 ```
 
 Require and use:
+
 ```js
 const epubchecker = require('epubchecker');
 
